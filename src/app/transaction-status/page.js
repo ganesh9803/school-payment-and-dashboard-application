@@ -42,28 +42,34 @@ const TransactionStatus = () => {
         <div>
             <Navbar />
             <div className="dark:bg-gray-800 dark:text-white">
-            <div className="p-6">
+                <div className="p-6">
                     <h1 className="text-2xl font-bold mb-4">Check Transaction Status</h1>
-                    <input
-                        type="text"
-                        placeholder="Enter Custom Order ID"
-                        value={customOrderId}
-                        onChange={(e) => setCustomOrderId(e.target.value)}
-                        className="border p-2 rounded mb-4 text-green-500"
-                    />
-                    <button
-                        onClick={checkStatus}
-                        className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-                    >
-                        {loading ? 'Checking...' : 'Check Status'}
-                    </button>
+                    
+                    {/* Input and Button for Checking Status */}
+                    <div className="flex flex-col sm:flex-row sm:space-x-4 mb-4">
+                        <input
+                            type="text"
+                            placeholder="Enter Custom Order ID"
+                            value={customOrderId}
+                            onChange={(e) => setCustomOrderId(e.target.value)}
+                            className="border p-2 rounded mb-2 sm:mb-0 sm:w-1/3 text-green-500"
+                        />
+                        <button
+                            onClick={checkStatus}
+                            className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 sm:w-1/3"
+                        >
+                            {loading ? 'Checking...' : 'Check Status'}
+                        </button>
+                    </div>
 
+                    {/* Error Message */}
                     {error && (
                         <div className="mt-4 text-red-500">
                             <p>{error}</p>
                         </div>
                     )}
 
+                    {/* Transaction Status */}
                     {status && (
                         <div className="mt-4">
                             <h2 className="font-bold">Transaction Status:</h2>
@@ -71,9 +77,9 @@ const TransactionStatus = () => {
                         </div>
                     )}
                 </div>
-                </div>
             </div>
-            );
+        </div>
+    );
 };
 
 export default TransactionStatus;

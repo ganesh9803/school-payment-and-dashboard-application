@@ -1,5 +1,3 @@
-// src/app/page.js (or create a new file for the login page, e.g., src/app/login.js)
-
 'use client';
 
 import React, { useState } from 'react';
@@ -32,8 +30,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md p-6 bg-white rounded shadow-lg">
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
         <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
         {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
         <form onSubmit={handleLogin}>

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 const Navbar = () => {
   const router = useRouter();
   const [theme, setTheme] = useState('light');  
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     // Load the theme from localStorage on initial render
@@ -27,46 +28,110 @@ const Navbar = () => {
     document.body.classList.add(newTheme);
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <div className="dark:bg-gray-800 dark:text-white">
-    <nav className="bg-blue-500 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white font-bold text-lg">School Payments</div>
-        <div className="flex space-x-4">
+      <nav className="bg-blue-500 p-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="text-white font-bold text-lg">School Payments</div>
+          
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="lg:hidden text-white p-2 rounded"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex space-x-4">
+            <button
+              onClick={() => router.push('/dashboard')}
+              className="text-white hover:bg-blue-700 p-2 rounded"
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => router.push('/transaction-by-school')}
+              className="text-white hover:bg-blue-700 p-2 rounded"
+            >
+              Transactions by School
+            </button>
+            <button
+              onClick={() => router.push('/transaction-status')}
+              className="text-white hover:bg-blue-700 p-2 rounded"
+            >
+              Check Transaction Status
+            </button>
+            <button
+              onClick={handleLogout}
+              className="text-white hover:bg-red-700 p-2 rounded"
+            >
+              Logout
+            </button>
+            {/* Toggle Theme Button */}
+            <button
+              onClick={toggleTheme}
+              className="text-white hover:bg-gray-700 p-2 rounded"
+            >
+              Toggle Theme
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden bg-blue-500 p-4 space-y-4">
           <button
             onClick={() => router.push('/dashboard')}
-            className="text-white hover:bg-blue-700 p-2 rounded"
+            className="text-white hover:bg-blue-700 p-2 rounded w-full text-left"
           >
             Dashboard
           </button>
           <button
             onClick={() => router.push('/transaction-by-school')}
-            className="text-white hover:bg-blue-700 p-2 rounded"
+            className="text-white hover:bg-blue-700 p-2 rounded w-full text-left"
           >
             Transactions by School
           </button>
           <button
             onClick={() => router.push('/transaction-status')}
-            className="text-white hover:bg-blue-700 p-2 rounded"
+            className="text-white hover:bg-blue-700 p-2 rounded w-full text-left"
           >
             Check Transaction Status
           </button>
           <button
             onClick={handleLogout}
-            className="text-white hover:bg-red-700 p-2 rounded"
+            className="text-white hover:bg-red-700 p-2 rounded w-full text-left"
           >
             Logout
           </button>
           {/* Toggle Theme Button */}
           <button
             onClick={toggleTheme}
-            className="text-white hover:bg-gray-700 p-2 rounded"
+            className="text-white hover:bg-gray-700 p-2 rounded w-full text-left"
           >
             Toggle Theme
           </button>
         </div>
-      </div>
-    </nav>
+      )}
     </div>
   );
 };
