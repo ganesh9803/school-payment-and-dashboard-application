@@ -119,33 +119,35 @@ const Dashboard = () => {
             </button>
           </div>
 
-          {/* Transaction Table */}
-          <table className="w-full border-collapse border border-gray-300">
-            <thead>
-              <tr>
-                <th className="border p-2">Collect ID</th>
-                <th className="border p-2">School ID</th>
-                <th className="border p-2">Gateway</th>
-                <th className="border p-2">Order Amount</th>
-                <th className="border p-2">Transaction Amount</th>
-                <th className="border p-2">Status</th>
-                <th className="border p-2">Custom Order ID</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedTransactions.map((transaction) => (
-                <tr key={transaction.collect_id}>
-                  <td className="border p-2">{transaction.collect_id}</td>
-                  <td className="border p-2">{transaction.school_id}</td>
-                  <td className="border p-2">{transaction.gateway}</td>
-                  <td className="border p-2">{transaction.order_amount}</td>
-                  <td className="border p-2">{transaction.transaction_amount}</td>
-                  <td className="border p-2">{transaction.status}</td>
-                  <td className="border p-2">{transaction.custom_order_id}</td>
+          {/* Transaction Table with Scroll on Mobile */}
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full border-collapse border border-gray-300">
+              <thead>
+                <tr>
+                  <th className="border p-2">Collect ID</th>
+                  <th className="border p-2">School ID</th>
+                  <th className="border p-2">Gateway</th>
+                  <th className="border p-2">Order Amount</th>
+                  <th className="border p-2">Transaction Amount</th>
+                  <th className="border p-2">Status</th>
+                  <th className="border p-2">Custom Order ID</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {paginatedTransactions.map((transaction) => (
+                  <tr key={transaction.collect_id}>
+                    <td className="border p-2">{transaction.collect_id}</td>
+                    <td className="border p-2">{transaction.school_id}</td>
+                    <td className="border p-2">{transaction.gateway}</td>
+                    <td className="border p-2">{transaction.order_amount}</td>
+                    <td className="border p-2">{transaction.transaction_amount}</td>
+                    <td className="border p-2">{transaction.status}</td>
+                    <td className="border p-2">{transaction.custom_order_id}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
           {/* Pagination */}
           <div className="mt-4 flex justify-center items-center gap-2">

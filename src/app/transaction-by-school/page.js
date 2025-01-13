@@ -66,7 +66,7 @@ const TransactionBySchool = () => {
           <div className="overflow-x-auto">
             <table className="min-w-full border-collapse border border-gray-300 mt-4">
               <thead>
-                <tr className="bg-blue-100">
+                <tr>
                   <th className="border p-2">Collect ID</th>
                   <th className="border p-2">School ID</th>
                   <th className="border p-2">Gateway</th>
