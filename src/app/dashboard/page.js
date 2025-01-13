@@ -24,7 +24,7 @@ const Dashboard = () => {
           return;
         }
 
-        const response = await axios.get('api/transactions', {
+        const response = await axios.get('/api/transactions', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
